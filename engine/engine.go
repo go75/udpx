@@ -77,3 +77,7 @@ func (e *Engine) Run() error {
 	}()
 	return <-e.ErrChan
 }
+
+func (e *Engine) Send(data []byte, addr *net.UDPAddr) (int, error) {
+	return e.conn.WriteToUDP(data, addr)
+}
